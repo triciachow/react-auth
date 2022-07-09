@@ -96,6 +96,16 @@ app.post("/login", (request, response) => {
     });
 });
 
+// Free endpoint
+app.get("/free-endpoint", (request, response) => {
+  response.json({ message: "You are free to access me anytime" });
+});
+
+// Authentication endpoint
+app.get("/auth-endpoint", (request, response) => {
+  response.json({ message: "You are authorized to access me" });
+});
+
 dbConnect();
 
 module.exports = app;
