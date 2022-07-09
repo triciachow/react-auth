@@ -5,6 +5,7 @@ const dbConnect = require("./db/dbConnect");
 const User = require("./db/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const auth = require("./auth");
 
 // Body parser configuration
 app.use(bodyParser.json());
@@ -102,7 +103,8 @@ app.get("/free-endpoint", (request, response) => {
 });
 
 // Authentication endpoint
-app.get("/auth-endpoint", (request, response) => {
+// Add `auth` as a 2nd argument
+app.get("/auth-endpoint", auth, (request, response) => {
   response.json({ message: "You are authorized to access me" });
 });
 
